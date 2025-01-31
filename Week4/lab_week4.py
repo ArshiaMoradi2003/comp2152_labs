@@ -81,6 +81,9 @@ loot_options = ["Health Potion", "Poison Potion", "Secret Note", "Leather Boots"
 good_loot_options = ["Health Potion", "Leather Boots"]
 bad_loot_options = ["Poison Potion"]
 
+# Lab 04 - Q4
+belt = []
+
 # Lab04 - Q1
 # Define the Monster Power
 monster_power = {
@@ -151,6 +154,37 @@ print("Player rolled " + str(health_points) + " health points")
 input("Roll the dice for the monster's health points (Press enter)")
 m_health_points = random.choice(diceOptions)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
+# Lab 04 - Q5 - item 1
+print("You Find a loot bag! Look inside to find 2 items.")
+input("Roll for the first item (Press enter)")
+lootRoll = random.choice(range(1, len(loot_options) + 1))
+loot = loot_options.pop(lootRoll - 1)
+belt.append(loot)
+print("Your belt:" , belt)
+# Lab 04 - Q6 - item 2
+print("You Find a loot bag! Look inside to find 2 items.")
+input("Roll for the second item (Press enter)")
+lootRoll = random.choice(range(1, len(loot_options) + 1))
+loot = loot_options.pop(lootRoll - 1)
+belt.append(loot)
+print("Your belt:" , belt)
+
+# Lab 04 - Q7
+print("You got the loots, so organize your belt alphabetically:")
+belt.sort()
+print("Your belt: ", belt)
+
+# Lab 04 - Q8
+print("You see a Monster in the distance So, quickly use your first item!")
+first_item = belt.pop(0)
+if first_item in good_loot_options:
+    health_points = min(6, (health_points + 2))
+    print(f" You used the {first_item}, and your health changed to {health_points}.")
+elif first_item in bad_loot_options:
+    health_points = max(6, (health_points - 2))
+    print(f" You used the {first_item}, and your health changed to {health_points}.")
+else:
+    print(f"You used the {first_item}, but it was not helpful.")
 
 input("Analyze the roll (Press enter)")
 # Compare Player vs Monster's strength
