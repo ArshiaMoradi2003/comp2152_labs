@@ -118,7 +118,7 @@ def monster_attacks(m_combat_strength, health_points):
 # Recursion
 # You can choose to go crazy, but it will reduce your health points by 5
 def inception_dream(num_dream_lvls):
-    num_dream_lvls = int(num_dream_lvls)
+    num_dream_lvls = int (num_dream_lvls)
 
     # Base Case
     if num_dream_lvls == 1:
