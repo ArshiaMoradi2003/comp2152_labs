@@ -1,10 +1,6 @@
 # Import the random library to use for the dice later
 import random
 
-from Assignments.comp2152_labs.Week4.lab_week4 import num_stars
-from comp2152_labs.Week6.lab06 import last_game
-
-
 # Will the line below print when you import function.py into main.py?
 # print("Inside function.py")
 
@@ -145,15 +141,14 @@ def inception_dream(num_dream_lvls):
 def save_game(winner, hero_name="", num_stars=0):
     with open('save.txt', 'a') as file:
         if winner == "Hero":
-            file.write(f"Hero{hero_name} has killed the monster and gained {num_stars} stars.\n")
-
+            file.write(f"Hero {hero_name} has killed the monster and gained {num_stars} starts.\n")
         elif winner == "Monster":
             file.write(f"Monster killed the {hero_name}")
 # Lab 06 - Question 5a
 def load_game():
     try:
         with open('save.txt', 'r') as file:
-            print("    |     Loading from saved file..")
+            print("    |    Loading from saved file..")
             lines = file.readlines()
             if lines:
                 last_line = lines[-1].strip()
@@ -163,16 +158,16 @@ def load_game():
         print("No previous game found. Starting fresh..")
         return None
 # Lab 06 - Question 5b
-def adjust_combat_strength(combat_strength, m_combat_strength):
+def adjust_combat_strength(comat_strength, m_comat_strength):
     last_game = load_game()
     if last_game:
         if "Hero" in last_game and "gained" in last_game:
             num_stars = int(last_game.split()[-2])
             if num_stars > 3:
-                print("    |    Increasing the monster combat strength")
-                m_combat_strength += 1
-            elif "Monster killed the hero" in last_game:
-                print("    |    Increasing the hero combat strength")
-                combat_strength += 1
-            else:
-                print("    |    ... last game had no effect on Hero/Monster combat strength")
+                print("    |    Increasing the Monster comat strength")
+                m_comat_strength += 1
+        elif "Monster killed the" in last_game:
+                print("    |    Increasing the Hero comat strength")
+                comat_strength += 1
+        else:
+            print("    |    ... last game had no efect on Hero/Monster comat strength")
